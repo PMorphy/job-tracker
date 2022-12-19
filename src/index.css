@@ -1,0 +1,108 @@
+:root {
+  --primary-color: rgb(94, 191, 250);
+  --secondary-color: rgb(255, 249, 166);
+  --success-color: #95ff95;
+  --caution: #ffe100;
+  --danger: #fb7070;
+
+  --white: #f4f4f4;
+  --black: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited,
+a:active {
+  color: var(--black);
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 109rem;
+  overflow: hidden;
+  padding: 2rem 4rem;
+  min-height: 100vh;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 25rem auto;
+  grid-template-areas:
+    'jobs-list jobs-report'
+    'jobs-list job-details';
+}
+
+.jobs-list {
+  grid-area: jobs-list;
+  background-color: lightblue;
+  box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+.jobs-report {
+  grid-area: jobs-report;
+  background-color: rgb(255, 236, 200);
+  box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+.job-details {
+  grid-area: job-details;
+  background-color: rgb(230, 173, 187);
+  box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+@media (max-width: 1040px) {
+  .container {
+    padding: 2rem 3rem;
+  }
+}
+
+@media (max-width: 850px), (max-height: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+      'job-details'
+      'jobs-list';
+  }
+
+  .jobs-report {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .container {
+    padding: 2rem 0.5rem;
+  }
+}
