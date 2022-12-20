@@ -75,6 +75,14 @@ ul {
   border-radius: 5px;
 }
 
+.lead {
+  margin: 2.3rem auto;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 1.2px;
+}
+
+/* MEDIA */
 @media (max-width: 1040px) {
   .container {
     padding: 2rem 3rem;
