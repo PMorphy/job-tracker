@@ -1,3 +1,5 @@
+import React from 'react';
+import JobDetail from './components/JobDetail';
 import JobsListing from './components/JobsListing';
 import { GlobalProvider } from './context/GlobalState';
 
@@ -10,7 +12,9 @@ function App() {
           <JobsListing />
         </section>
         <section className='jobs-report'></section>
-        <section className='job-details'></section>
+        <section className='job-details'>
+          <JobDetail />
+        </section>
       </main>
     </GlobalProvider>
   );

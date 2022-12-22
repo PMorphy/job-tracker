@@ -1,14 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import JobListing from './JobListing';
 
 const JobsListing = () => {
-  const { jobs } = useContext(GlobalContext);
+  const { jobs, getJobs } = useContext(GlobalContext);
+  useEffect(() => {
+    getJobs();
+  }, []);
   return (
     <ul>
-      {jobs.map((job) => (
-        <JobListing key={job.id} job={job} />
-      ))}
+      {jobs.length > 0 ? (
+        jobs.map((job) => <JobListing key={job._id} job={job} />)
+      ) : (
+        <h2>No Jobs! You're Free to Relax</h2>
+      )}
     </ul>
   );
 };

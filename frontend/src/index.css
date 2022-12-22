@@ -41,12 +41,36 @@ ul {
   list-style: none;
 }
 
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+  background-color: var(--white);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn.btn-primary {
+  background-color: var(--primary-color);
+}
+
+.btn.btn-secondary {
+  background-color: var(--secondary-color);
+}
+
+.btn.btn-danger {
+  background-color: var(--danger);
+}
+
 .container {
   margin: 0 auto;
   max-width: 109rem;
   overflow: hidden;
   padding: 2rem 4rem;
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(2, 1fr);
@@ -58,21 +82,25 @@ ul {
 
 .jobs-list {
   grid-area: jobs-list;
-  background-color: lightblue;
+  /* background-color: lightblue; */
   box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+  overflow-y: auto;
 }
+
 .jobs-report {
   grid-area: jobs-report;
   background-color: rgb(255, 236, 200);
   box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 }
+
 .job-details {
   grid-area: job-details;
-  background-color: rgb(230, 173, 187);
+  /* background-color: rgb(230, 173, 187); */
   box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+  min-height: 12rem;
 }
 
 .lead {
@@ -80,6 +108,19 @@ ul {
   text-align: center;
   font-weight: 300;
   letter-spacing: 1.2px;
+}
+
+.job-card {
+  border: 1px solid #000;
+  padding: 1.7rem 3.4rem;
+  margin: 1.2rem;
+  border-radius: 5px;
+}
+
+.job-card .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* MEDIA */
