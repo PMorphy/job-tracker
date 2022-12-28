@@ -3,9 +3,9 @@ import Job from '../models/jobModel.js';
 const getJobs = async (req, res) => {
   try {
     const jobs = await Job.find();
-    res.status(200).json(jobs);
+    return res.status(200).json(jobs);
   } catch (error) {
-    res.status(500).json({ error });
+    return res.status(500).json({ error });
   }
 };
 
@@ -37,4 +37,18 @@ const deleteJob = async (req, res) => {
   }
 };
 
-export { getJobs, addJob, deleteJob };
+const updateJob = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+    if (!job) {
+      return res.status(400).json({ error: 'Unable to Find Job' });
+    }
+
+    const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body);
+    return res.status(200).json(updatedJob);
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
+
+export { getJobs, addJob, deleteJob, updateJob };

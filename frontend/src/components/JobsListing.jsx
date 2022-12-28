@@ -12,7 +12,7 @@ const JobsListing = () => {
       {jobs.length > 0 ? (
         jobs.map((job) => <JobListing key={job._id} job={job} />)
       ) : (
-        <h2>No Jobs! You're Free to Relax</h2>
+        <h2 className='lead'>No Jobs! You're Free to Relax</h2>
       )}
     </ul>
   );

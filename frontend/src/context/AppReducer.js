@@ -12,6 +12,16 @@ const reducer = (state, action) => {
         ...state,
         jobs: [...state.jobs, payload]
       };
+    case 'UPDATE_JOB':
+      const jobExists = state.jobs.find((job) => job._id === payload._id);
+      const jobs = jobExists
+        ? state.jobs.map((job) => (job._id === payload._id ? payload : job))
+        : [...state.jobs];
+
+      return {
+        ...state,
+        jobs
+      };
     case 'DELETE_JOB':
       return {
         ...state,
@@ -30,7 +40,7 @@ const reducer = (state, action) => {
     case 'CLEAR_JOB':
       return {
         ...state,
-        job: {}
+        job: null
       };
     default:
       return state;

@@ -8,12 +8,10 @@ const JobSchema = new mongoose.Schema({
   },
   isUrgent: {
     type: Boolean,
-    required: true,
     default: false
   },
   requestedOn: {
     type: Date,
-    required: true,
     default: Date.now
   },
   finishedOn: {

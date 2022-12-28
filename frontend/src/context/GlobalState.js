@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const initialState = {
   jobs: [],
-  job: {},
+  job: null,
   error: '',
   loading: true
 };
@@ -30,15 +30,38 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
-  const getJob = () => {
-    return state.job;
+  const addJob = async (job) => {
+    try {
+      const config = {
+        'Content-Type': 'application/json'
+      };
+      const { data } = await axios.post('/api/jobs', job, config);
+
+      dispatch({
+        type: 'ADD_JOB',
+        payload: data.job
+      });
+    } catch (error) {
+      dispatch({
+        type: 'JOB_FAIL',
+        payload: error.response.data.error
+      });
+    }
   };
 
-  const addJob = async (job) => {
-    dispatch({
-      type: 'ADD_JOB',
-      payload: job
-    });
+  const updateJob = async (job) => {
+    try {
+      await axios.put(`/api/jobs/${job._id}`, job);
+      dispatch({
+        type: 'UPDATE_JOB',
+        payload: job
+      });
+    } catch (error) {
+      dispatch({
+        type: 'JOB_FAIL',
+        payload: error.response.data.error
+      });
+    }
   };
 
   const deleteJob = async (id) => {
@@ -68,18 +91,20 @@ export const GlobalProvider = ({ children }) => {
       type: 'CLEAR_JOB'
     });
   };
+
   return (
     <GlobalContext.Provider
       value={{
         jobs: state.jobs,
+        job: state.job,
+        error: state.error,
+        loading: state.loading,
         addJob,
+        updateJob,
         deleteJob,
         getJobs,
         setJob,
-        getJob,
-        clearJob,
-        error: state.error,
-        loading: state.loading
+        clearJob
       }}
     >
       {children}
